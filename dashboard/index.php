@@ -10,7 +10,13 @@
                             <h4><span style="border-bottom: 3px solid;">Revenues</span></h4>
                         </div>
                         <div>
-                            <h1>Rp 25.000</h1>
+                            <?php
+                                $query = "SELECT SUM(total) AS revenues FROM transactions";
+                                $result = mysqli_query($koneksi, $query);
+                                $data = mysqli_fetch_array($result);
+                                $revenues = $data['revenues'];
+                            ?>
+                            <h1>Rp <?= number_format($revenues, 0, 0, '.') ?></h1>
                         </div>
                     </div>
                 </div>
@@ -24,7 +30,13 @@
                             <h4><span style="border-bottom: 3px solid;">Medicines</span></h4>
                         </div>
                         <div>
-                            <h1>5</h1>
+                            <?php
+                                $query = "SELECT COUNT(id) AS medicines FROM medicines";
+                                $result = mysqli_query($koneksi, $query);
+                                $data = mysqli_fetch_array($result);
+                                $medicines = $data['medicines'];
+                            ?>
+                            <h1><?= $medicines ?></h1>
                         </div>
                     </div>
                 </div>
@@ -38,7 +50,13 @@
                             <h4><span style="border-bottom: 3px solid;">Suppliers</span></h4>
                         </div>
                         <div>
-                            <h1>5</h1>
+                            <?php
+                                $query = "SELECT COUNT(id) AS suppliers FROM suppliers";
+                                $result = mysqli_query($koneksi, $query);
+                                $data = mysqli_fetch_array($result);
+                                $suppliers = $data['suppliers'];
+                            ?>
+                            <h1><?= $suppliers ?></h1>
                         </div>
                     </div>
                 </div>
